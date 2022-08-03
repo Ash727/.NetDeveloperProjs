@@ -1,0 +1,41 @@
+﻿@page "/addresses"
+<h3>AddressEntery</h3>
+<EditForm Model ="addressModel" OnValidSubmit="ValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <InputText placeholder ="StreetAddress" class="form-control" @bind-Value="addressModel.StreetAddress"></InputText>
+    <InputText placeholder ="City" class="form-control" @bind-Value="addressModel.City"></InputText>
+    <InputText placeholder ="Province" class="form-control" @bind-Value="addressModel.Province"></InputText>
+    <InputText placeholder ="PostalCode" class="form-control" @bind-Value="addressModel.PostalCode"></InputText>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
+<h3>Address Model </h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Street Address </th>
+            <th>City </th>
+            <th>Province </th>
+            <th>PostalCode</th>
+        </tr>
+    </thead>
+    @foreach (var address in listOfAddresses)
+    {
+        <tr>
+            <td> @address.StreetAddress</td>
+            <td> @address.City</td>
+            <td> @address.Province</td>
+            <td> @address.PostalCode</td>
+        </tr>
+    }
+</table>
+ 
+@code {
+    AddressModel addressModel = new AddressModel();
+    List<AddressModel> listOfAddresses = new List<AddressModel>();
+    public void ValidSubmit()
+    {
+        listOfAddresses.Add(addressModel);
+        addressModel = new AddressModel();
+    }
+}

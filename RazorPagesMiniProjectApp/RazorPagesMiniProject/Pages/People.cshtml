@@ -1,0 +1,24 @@
+﻿@page
+@model RaazorPagesMiniProjec.Pages.PeopleModel
+@{
+    ViewData["Title"] = "People";
+}
+
+<h1>People</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Person.FirstName"></label>
+        <input class="form-control" type="text" asp-for="Person.FirstName" placeholder="First Name" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Person.LastName"></label>
+        <input class="form-control" type="text" asp-for="Person.LastName" placeholder="Last Name" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Person.IsActive"></label>
+        <input   type="checkbox" asp-for="Person.IsActive" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

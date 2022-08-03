@@ -1,0 +1,28 @@
+﻿@page
+@model RaazorPagesMiniProjec.Pages.AddressesModel
+@{
+}
+<h1>Addreses</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="UserAddress.StreetAddress"></label>
+        <input class="form-control" type="text" asp-for="UserAddress.StreetAddress" placeholder="Street Address" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="UserAddress.City"></label>
+        <input class="form-control" type="text" asp-for="UserAddress.City" placeholder="City" />
+    </div>    
+    <div>
+    <label asp-for="UserAddress.Province"></label>
+        <input class="form-control" type="text" asp-for="UserAddress.Province" placeholder="Province" />
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="UserAddress.PostalCode"></label>
+        <input class="form-control" type="text" asp-for="UserAddress.PostalCode" placeholder="PostalCode" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

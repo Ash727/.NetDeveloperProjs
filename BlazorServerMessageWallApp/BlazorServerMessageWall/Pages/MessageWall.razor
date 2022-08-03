@@ -1,0 +1,43 @@
+﻿@page "/MessageWall"
+@page "/MessageWall/Ash"
+
+<PageTitle> Custome MessageWall </PageTitle>
+
+<h3>MessageWall</h3>
+
+    <ul class="form-control"> 
+        @foreach (var msg in messages)
+        {
+            <li class="form-control">@msg</li>
+        }
+    </ul>
+
+
+@*ASP.NET  custome made components in order to use a model with a form *@
+@*Edit form contarins Event keys like OnScroll, Onclick, OnInnvalidSubmit, OnSubmit*@
+<EditForm Model="model" OnValidSubmit="ValidSubmission">
+    @*Apart of Microsoft Code *@
+    <DataAnnotationsValidator />
+
+    @*Gives all of the Errors at the top*@
+    <ValidationSummary />
+
+    @*Gives the Property name of the form *@
+    <label for="message" class="form-label">@nameof(model.Message)</label>
+
+    @*The id links up to the for in the label bind-Balue binds the input text to the message*@
+    <InputText id="message" @bind-Value="model.Message" class="form-control" />
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private MessageModel model = new MessageModel();
+    // or private MessageModel model = new();
+    private List<string> messages = new List<string>();
+
+    public void ValidSubmission()
+    {
+        messages.Add(model.Message);
+        model = new MessageModel();
+    }
+}
