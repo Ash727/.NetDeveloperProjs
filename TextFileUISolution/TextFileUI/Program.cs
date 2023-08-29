@@ -14,7 +14,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             InitializeConfiguration();
-            textFile = _config.GetValue<string>("TextFile");
+            //  textFile = _config.GetValue<string>("TextFile");
+            textFile = Directory.GetCurrentDirectory()  + "Contacts.csv";
             ContactModel user1 = new ContactModel();
             user1.FirstName = "Ash";
             user1.LastName = "Morley";
@@ -31,13 +32,13 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
            List<ContactModel> contacts = new List<ContactModel>() { user1, user2};
 
-            //CreateContacts(user1);
+            CreateContacts(user1);
             //CreateContacts(user2);
             //GetAllContacts();
             //PrintAllContacts();
             //UpdateContactFirstContactName("Ashley");
             //RemovePhoneNumberFromUser("555-5555");
-            RemoveFirstUser();
+           // RemoveFirstUser();
            // db.WriteAllRecords(contacts, textFile);
             Console.WriteLine("Done Processing!");
             Console.ReadLine();
@@ -45,7 +46,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
        
         public static void RemoveFirstUser()
         {
+            
             var contacts = db.ReadAllRecords(textFile);
+            if(contacts.Count == 0) {
+                Console.WriteLine("No items to delete");
+                return;
+            }
             contacts.RemoveAt(0);
             db.WriteAllRecords(contacts,textFile);
         }
