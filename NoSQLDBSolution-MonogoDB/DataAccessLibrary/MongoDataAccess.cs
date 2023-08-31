@@ -11,7 +11,8 @@ namespace DataAccessLibrary
     public class MongoDataAccess
     {
         /*
-        NOTE A DATABASE IS A COLLECTION OF TABLES FOR NOSQL OR SQL 
+         * Dont Forget !!
+        NOTE: A DATABASE IS A COLLECTION OF TABLES FOR NOSQL OR SQL 
         IN MONGODB COLLECTION = TABLE = COLLECTION
          */
         public IMongoDatabase db;
