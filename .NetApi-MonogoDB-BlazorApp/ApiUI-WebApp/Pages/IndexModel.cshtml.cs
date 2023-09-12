@@ -1,4 +1,5 @@
 ﻿using ApiUI_WebApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
 
@@ -9,6 +10,13 @@ namespace SampleAPI.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly IHttpClientFactory _httpClientFactory; // IHttpclient factory is able to be used becuase of dependency injetion in the program.cs at builder.Services.AddHttpClient();
 
+        [BindProperty]
+        public int Counters { get; set; }
+
+        [BindProperty]
+        public ContactModel contactModel { get; set; } = new ContactModel();
+
+        List<ContactModel> contacts = new List<ContactModel>();
 
         public IndexModel(ILogger<IndexModel> logger, IHttpClientFactory httpClientFactory)
         {
@@ -18,8 +26,9 @@ namespace SampleAPI.Pages
 
         public async void OnGet()
         {
-            await GetAllContacts();
+  
         }
+
 
         private async Task GetAllContacts()
         {
@@ -34,9 +43,10 @@ namespace SampleAPI.Pages
 
                 };
 
-                List<ContactModel> contacts;
+                //List<ContactModel> contacts;
                 string responseText = await response.Content.ReadAsStringAsync();
                 contacts = JsonSerializer.Deserialize<List<ContactModel>>(responseText, options);
+        
             }
             else
             {
