@@ -8,6 +8,6 @@ namespace DataAccessLibrary.Models
 {
     public class EmailaddressModel
     {
-        public string EamilAddress { get; set; }
+        public string EmailAddress { get; set; }
     }
 }

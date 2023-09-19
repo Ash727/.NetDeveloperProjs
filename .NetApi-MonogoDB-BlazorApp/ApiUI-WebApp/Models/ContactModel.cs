@@ -3,10 +3,11 @@
 
     public class ContactModel
     {
-        public string Id { get; set; }
+        
+        public Guid Id  = Guid.NewGuid();
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public List<EmailaddressModel> EmailAddresses { get; set; }
-        public List<PhoneNumberModel> PhoneNumbers { get; set; }
+        public List<EmailaddressModel> EmailAddresses { get; set; } = new List<EmailaddressModel>();
+        public List<PhoneNumberModel> PhoneNumbers { get; set; } = new List<PhoneNumberModel> ();
     }
 }
